@@ -29,6 +29,7 @@ body {
   background-position: center;
   background-color: #eaf4e6;
   min-height: 100vh;
+  overscroll-behavior-y: none;
 }
 
 body::before,

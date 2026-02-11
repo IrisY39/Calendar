@@ -3,8 +3,8 @@
   "short_name": "日历",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#fff4f8",
-  "theme_color": "#ffd9e6",
+  "background_color": "#eaf4e6",
+  "theme_color": "#4f7f5c",
   "icons": [
     {
       "src": "assets/icon.svg",
