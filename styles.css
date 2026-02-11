@@ -43,12 +43,14 @@ body::before {
   top: -90px;
   left: -90px;
   background: radial-gradient(circle, #eaf5e3 0, #cfe3c9 60%, transparent 70%);
+  opacity: 0;
 }
 
 body::after {
   bottom: -110px;
   right: -90px;
   background: radial-gradient(circle, #e6f2da 0, #c8ddc3 60%, transparent 70%);
+  opacity: 0;
 }
 
 .app {
@@ -85,36 +87,24 @@ body::after {
 .blob {
   width: 54px;
   height: 54px;
-  border-radius: 18px 26px 20px 30px;
-  background: linear-gradient(135deg, #7bb48b, #cde7c6);
+  border-radius: 16px;
+  background: url("assets/forest-icon.svg") center / cover no-repeat;
   position: relative;
   box-shadow: var(--shadow);
-  transform: rotate(-6deg);
+  transform: rotate(0deg);
 }
 
 .blob::after {
   content: "";
   position: absolute;
-  width: 20px;
-  height: 12px;
-  border-radius: 50% 50% 45% 45%;
-  right: 8px;
-  top: 10px;
-  background: #f2fbef;
-  opacity: 0.9;
+  inset: 6px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  opacity: 0.6;
 }
 
 .blob::before {
-  content: "";
-  position: absolute;
-  left: 10px;
-  bottom: 8px;
-  width: 18px;
-  height: 18px;
-  border-radius: 0 80% 80% 80%;
-  background: #f0f8ed;
-  transform: rotate(35deg);
-  box-shadow: 0 2px 0 rgba(60, 90, 55, 0.08);
+  content: none;
 }
 
 .title {
