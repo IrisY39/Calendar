@@ -315,10 +315,8 @@ body::after {
 }
 
 .top-btn {
-  margin-top: 8px;
-  width: auto;
-  padding: 8px 14px;
-  font-size: 14px;
+  margin-top: 10px;
+  width: 100%;
 }
 
 .quote-card {
