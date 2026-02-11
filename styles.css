@@ -316,7 +316,8 @@ body::after {
 
 .top-btn {
   margin-top: 10px;
-  width: 100%;
+  width: auto;
+  align-self: flex-start;
 }
 
 .quote-card {
