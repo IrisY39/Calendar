@@ -15,6 +15,11 @@
 
 * { box-sizing: border-box; }
 
+html {
+  background-color: #eaf4e6;
+  overscroll-behavior-y: none;
+}
+
 body {
   margin: 0;
   font-family: "ZCOOL KuaiLe", "Comic Sans MS", "Segoe UI", sans-serif;
