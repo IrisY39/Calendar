@@ -4,6 +4,12 @@ const messageText = document.getElementById("messageText");
 const subtitle = document.getElementById("subtitle");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
+const quoteView = document.getElementById("quoteView");
+const calendarView = document.getElementById("calendarView");
+const quoteDate = document.getElementById("quoteDate");
+const quoteText = document.getElementById("quoteText");
+const toCalendar = document.getElementById("toCalendar");
+const toQuote = document.getElementById("toQuote");
 
 const today = new Date();
 let viewYear = today.getFullYear();
@@ -31,6 +37,11 @@ function formatMonth(date) {
   const y = date.getFullYear();
   const m = date.getMonth() + 1;
   return `${y} 年 ${m} 月`;
+}
+
+function formatDisplayDate(key) {
+  const [y, m, d] = key.split("-");
+  return `${y} 年 ${parseInt(m, 10)} 月 ${parseInt(d, 10)} 日`;
 }
 
 function buildCalendar(year, month) {
@@ -100,14 +111,31 @@ function showMessageForKey(key) {
   buildCalendar(viewYear, viewMonth);
 }
 
+function showQuoteForKey(key) {
+  quoteDate.textContent = formatDisplayDate(key);
+  quoteText.textContent = getMessageForKey(key);
+}
+
+function showQuoteView() {
+  quoteView.classList.add("is-active");
+  calendarView.classList.remove("is-active");
+}
+
+function showCalendarView() {
+  calendarView.classList.add("is-active");
+  quoteView.classList.remove("is-active");
+}
+
 async function loadMessage() {
   try {
     const res = await fetch("messages.json", { cache: "no-cache" });
     if (!res.ok) throw new Error("message fetch failed");
     messagesData = await res.json();
     showMessageForKey(formatDate(today));
+    showQuoteForKey(formatDate(today));
   } catch (err) {
     messageText.textContent = "";
+    quoteText.textContent = "";
   }
 }
 
@@ -136,10 +164,20 @@ grid.addEventListener("click", (event) => {
     return;
   }
   showMessageForKey(cell.dataset.date);
+  showQuoteForKey(cell.dataset.date);
+});
+
+toCalendar.addEventListener("click", () => {
+  showCalendarView();
+});
+
+toQuote.addEventListener("click", () => {
+  showQuoteView();
 });
 
 buildCalendar(viewYear, viewMonth);
 loadMessage();
+showQuoteView();
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {

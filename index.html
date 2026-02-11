@@ -20,24 +20,36 @@
           <div class="subtitle" id="subtitle">今天也是元气满满的一天</div>
         </div>
       </div>
+    </header>
+
+    <section class="view quote-view is-active" id="quoteView">
+      <div class="card quote-card">
+        <div class="quote-date" id="quoteDate">今天</div>
+        <div class="quote-text" id="quoteText">加载中...</div>
+      </div>
+      <button class="primary-btn" id="toCalendar">查看日历</button>
+    </section>
+
+    <section class="view calendar-view" id="calendarView">
+      <button class="nav back-btn" id="toQuote" aria-label="返回寄语">‹ 返回寄语</button>
       <div class="month">
         <button class="nav" id="prevBtn" aria-label="上一月">‹</button>
         <div class="month-label" id="monthLabel">2026 年 2 月</div>
         <button class="nav" id="nextBtn" aria-label="下一月">›</button>
       </div>
-    </header>
 
-    <section class="card">
-      <div class="weekday">
-        <div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div>
+      <div class="card">
+        <div class="weekday">
+          <div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div>
+        </div>
+        <div class="grid" id="calendarGrid"></div>
       </div>
-      <div class="grid" id="calendarGrid"></div>
-    </section>
 
-    <footer class="message">
-      <div class="message-label">今日寄语</div>
-      <div class="message-text" id="messageText">加载中...</div>
-    </footer>
+      <footer class="message">
+        <div class="message-label">当日寄语</div>
+        <div class="message-text" id="messageText">加载中...</div>
+      </footer>
+    </section>
   </main>
 
   <script src="app.js"></script>
