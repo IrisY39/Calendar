@@ -1,0 +1,45 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#ffd9e6" />
+  <title>可爱日历</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/icon.svg" />
+  <link rel="apple-touch-icon" href="assets/icon.svg" />
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <div class="brand">
+        <div class="blob"></div>
+        <div>
+          <div class="title">小小日历</div>
+          <div class="subtitle" id="subtitle">今天也是元气满满的一天</div>
+        </div>
+      </div>
+      <div class="month">
+        <button class="nav" id="prevBtn" aria-label="上一月">‹</button>
+        <div class="month-label" id="monthLabel">2026 年 2 月</div>
+        <button class="nav" id="nextBtn" aria-label="下一月">›</button>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="weekday">
+        <div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div>
+      </div>
+      <div class="grid" id="calendarGrid"></div>
+    </section>
+
+    <footer class="message">
+      <div class="message-label">今日寄语</div>
+      <div class="message-text" id="messageText">加载中...</div>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

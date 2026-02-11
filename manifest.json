@@ -1,0 +1,16 @@
+﻿{
+  "name": "可爱日历",
+  "short_name": "日历",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fff4f8",
+  "theme_color": "#ffd9e6",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "256x256",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
