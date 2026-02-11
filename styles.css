@@ -19,14 +19,9 @@ body {
   margin: 0;
   font-family: "ZCOOL KuaiLe", "Comic Sans MS", "Segoe UI", sans-serif;
   color: var(--ink);
-  background-image:
-    radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.35) 0, rgba(243, 247, 238, 0.35) 35%),
-    radial-gradient(circle at 90% 20%, rgba(244, 249, 240, 0.35) 0, rgba(227, 239, 224, 0.35) 40%),
-    radial-gradient(circle at 80% 80%, rgba(246, 251, 243, 0.35) 0, rgba(234, 244, 230, 0.35) 45%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(243, 247, 238, 0.4)),
-    url("pic.jpg");
-  background-size: auto, auto, auto, auto, cover;
-  background-position: center, center, center, center, center;
+  background-image: url("pic.jpg");
+  background-size: cover;
+  background-position: center;
   background-color: #eaf4e6;
   min-height: 100vh;
 }
@@ -71,13 +66,8 @@ body::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(circle at 12% 20%, rgba(255, 255, 255, 0.65) 0, rgba(255, 255, 255, 0) 45%),
-    radial-gradient(circle at 85% 10%, rgba(255, 255, 255, 0.6) 0, rgba(255, 255, 255, 0) 40%),
-    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.12) 0, rgba(255, 255, 255, 0.12) 2px, rgba(255, 255, 255, 0) 4px, rgba(255, 255, 255, 0) 8px);
-  opacity: 0.8;
+  opacity: 0;
   pointer-events: none;
-  border-radius: 24px;
 }
 
 .top {
@@ -326,6 +316,10 @@ body::after {
   align-content: center;
   min-height: 70vh;
   padding-top: 6vh;
+}
+
+.top-btn {
+  align-self: start;
 }
 
 .quote-card {
