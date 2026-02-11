@@ -321,14 +321,18 @@ body::after {
 }
 
 .quote-view {
-  gap: 14px;
+  gap: 18px;
+  justify-content: center;
+  align-content: center;
+  min-height: 70vh;
+  padding-top: 6vh;
 }
 
 .quote-card {
-  padding: 20px;
-  min-height: 180px;
+  padding: 26px;
+  min-height: 260px;
   display: grid;
-  gap: 10px;
+  gap: 14px;
 }
 
 .quote-card::after {
