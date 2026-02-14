@@ -370,8 +370,8 @@ body::after {
   text-align: center;
   color: #2f4f39;
   font-size: 15px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(79, 127, 92, 0.28);
+  background: linear-gradient(180deg, rgba(248, 241, 223, 0.8) 0, rgba(255, 247, 230, 0.8) 70%);
+  border: 1px solid rgba(123, 150, 110, 0.25);
   border-radius: 12px;
   padding: 8px 12px;
 }
