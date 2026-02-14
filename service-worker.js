@@ -1,13 +1,14 @@
-﻿const CACHE_NAME = "calendar-pwa-v5";
+﻿const CACHE_NAME = "calendar-pwa-v6";
 const ASSETS = [
   "./index.html",
   "./styles.css",
   "./app.js",
   "./messages.json",
   "./manifest.json",
-  "./assets/icon-192.png?v=2",
-  "./assets/icon-512.png?v=2",
-  "./assets/apple-touch-icon.png?v=2"
+  "./assets/icon-192.png",
+  "./assets/icon-512.png",
+  "./assets/apple-touch-icon.png",
+  "./apple-touch-icon.png"
 ];
 
 self.addEventListener("install", (event) => {
@@ -35,4 +36,3 @@ self.addEventListener("fetch", (event) => {
     caches.match(event.request).then((cached) => cached || fetch(event.request))
   );
 });
-
