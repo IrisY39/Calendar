@@ -32,6 +32,37 @@ body {
   overscroll-behavior-y: none;
 }
 
+.tap-heart {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  color: #ff6fa6;
+  font-size: 20px;
+  line-height: 1;
+  transform: translate(-50%, -50%);
+  animation: heart-pop 900ms ease-out forwards;
+  text-shadow: 0 2px 8px rgba(255, 111, 166, 0.35);
+}
+
+.tap-heart.size-1 { font-size: 14px; opacity: 0.92; }
+.tap-heart.size-2 { font-size: 20px; opacity: 0.95; }
+.tap-heart.size-3 { font-size: 26px; opacity: 0.88; }
+
+@keyframes heart-pop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -60%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -120%) scale(1.2);
+  }
+}
+
 body::before,
 body::after {
   content: "";
@@ -333,6 +364,16 @@ body::after {
   font-size: 20px;
   line-height: 1.5;
   font-family: "ZCOOL KuaiLe", "Comic Sans MS", "Segoe UI", sans-serif;
+}
+
+.together-text {
+  text-align: center;
+  color: #2f4f39;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(79, 127, 92, 0.28);
+  border-radius: 12px;
+  padding: 8px 12px;
 }
 
 .primary-btn {

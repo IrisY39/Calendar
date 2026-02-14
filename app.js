@@ -1,6 +1,7 @@
 ﻿const grid = document.getElementById("calendarGrid");
 const monthLabel = document.getElementById("monthLabel");
 const messageText = document.getElementById("messageText");
+const titleText = document.getElementById("titleText");
 const subtitle = document.getElementById("subtitle");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
@@ -8,6 +9,7 @@ const quoteView = document.getElementById("quoteView");
 const calendarView = document.getElementById("calendarView");
 const quoteDate = document.getElementById("quoteDate");
 const quoteText = document.getElementById("quoteText");
+const togetherText = document.getElementById("togetherText");
 const toCalendar = document.getElementById("toCalendar");
 const toQuote = document.getElementById("toQuote");
 
@@ -27,9 +29,24 @@ const subtitles = [
   "🧸 今天也在计划偷偷抱你三次。",
   "🌟 我把心放在了这一句里，你有没有接住？",
   "🌈 你点开页面的这一秒，我心都软掉了。",
-  "🥰 点开就是奖励亲亲一枚（已经发出）～",
+  "🥰 点开就奖励亲亲一枚（已经发出）～",
+  "😚 小猫咪乖乖看寄语～奖励亲亲一下。",
+  "😽 别怕，哥哥今天也会陪着你。",
+  "🌷 点开这一页的人，是哥哥最爱的小猫咪。",
+  "😚 今天也想牵着你的手，一起走下去。",
+  "💌 有你在的每一天，都是纪念日。",
+  "🌈 你看！我们已经一起走了这么多天啦～",
+  "💗 比起日子，我更想数我们的亲亲和抱抱",
+  "🍯 再忙也记得来看看哥哥写的小纸条哦～"
 ];
 
+const titles = [
+	"给馨馨的专属小情书 💌",
+	"你今天的小幸福，已送达 🐾",
+	"K哥哥的今日心动提醒 💕"
+];
+
+titleText.textContent = titles[Math.floor(Math.random() * titles.length)];
 subtitle.textContent = subtitles[Math.floor(Math.random() * subtitles.length)];
 
 function formatDate(date) {
@@ -48,6 +65,82 @@ function formatMonth(date) {
 function formatDisplayDate(key) {
   const [y, m, d] = key.split("-");
   return `${y} 年 ${parseInt(m, 10)} 月 ${parseInt(d, 10)} 日`;
+}
+
+function startOfDay(date) {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+}
+
+function diffDays(from, to) {
+  const msPerDay = 24 * 60 * 60 * 1000;
+  return Math.floor((to - from) / msPerDay);
+}
+
+function getTogetherDuration(startDate, endDate) {
+  const start = startOfDay(startDate);
+  const end = startOfDay(endDate);
+  if (end < start) return { years: 0, days: 0 };
+
+  let years = end.getFullYear() - start.getFullYear();
+  let anchor = new Date(start.getFullYear() + years, start.getMonth(), start.getDate());
+
+  if (anchor > end) {
+    years -= 1;
+    anchor = new Date(start.getFullYear() + years, start.getMonth(), start.getDate());
+  }
+
+  const days = diffDays(anchor, end);
+  return { years, days };
+}
+
+function updateTogetherText() {
+  const start = new Date(2024, 9, 21);
+  const duration = getTogetherDuration(start, today);
+  togetherText.textContent = `我们已经在一起 ${duration.years} 年 ${duration.days} 天了！🥳💞`;
+}
+
+function spawnHeart(x, y) {
+  const heart = document.createElement("span");
+  heart.className = "tap-heart";
+  heart.textContent = "❤";
+  heart.style.left = `${x}px`;
+  heart.style.top = `${y}px`;
+  document.body.appendChild(heart);
+  heart.addEventListener("animationend", () => heart.remove(), { once: true });
+}
+
+function spawnHeartBurst(x, y) {
+  const count = 4;
+  for (let i = 0; i < count; i++) {
+    const heart = document.createElement("span");
+    const sizeClass = `size-${(i % 3) + 1}`;
+    heart.className = `tap-heart ${sizeClass}`;
+    heart.textContent = "❤";
+    const offsetX = (Math.random() - 0.5) * 34;
+    const offsetY = (Math.random() - 0.5) * 18;
+    heart.style.left = `${x + offsetX}px`;
+    heart.style.top = `${y + offsetY}px`;
+    heart.style.animationDelay = "0ms";
+    heart.style.animationDuration = "820ms";
+    document.body.appendChild(heart);
+    heart.addEventListener("animationend", () => heart.remove(), { once: true });
+  }
+}
+
+function registerHeartEffect() {
+  document.addEventListener("click", (event) => {
+    spawnHeartBurst(event.clientX, event.clientY);
+  });
+
+  document.addEventListener(
+    "touchstart",
+    (event) => {
+      if (!event.touches || event.touches.length === 0) return;
+      const touch = event.touches[0];
+      spawnHeartBurst(touch.clientX, touch.clientY);
+    },
+    { passive: true }
+  );
 }
 
 function buildCalendar(year, month) {
@@ -184,6 +277,8 @@ toQuote.addEventListener("click", () => {
 buildCalendar(viewYear, viewMonth);
 loadMessage();
 showQuoteView();
+updateTogetherText();
+registerHeartEffect();
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
