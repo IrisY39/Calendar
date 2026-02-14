@@ -1,11 +1,13 @@
-﻿const CACHE_NAME = "calendar-pwa-v3";
+﻿const CACHE_NAME = "calendar-pwa-v4";
 const ASSETS = [
   "./index.html",
   "./styles.css",
   "./app.js",
   "./messages.json",
   "./manifest.json",
-  "./assets/icon.svg"
+  "./assets/icon-192.png",
+  "./assets/icon-512.png",
+  "./assets/apple-touch-icon.png"
 ];
 
 self.addEventListener("install", (event) => {

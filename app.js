@@ -96,7 +96,7 @@ function getTogetherDuration(startDate, endDate) {
 function updateTogetherText() {
   const start = new Date(2024, 9, 21);
   const duration = getTogetherDuration(start, today);
-  togetherText.textContent = `我们已经在一起 ${duration.years} 年 ${duration.days} 天了！🥳💞`;
+  togetherText.textContent = `我们已经在一起 ${duration.years} 年 ${duration.days} 天了🥳💞`;
 }
 
 function spawnHeart(x, y) {
@@ -110,7 +110,7 @@ function spawnHeart(x, y) {
 }
 
 function spawnHeartBurst(x, y) {
-  const count = 4;
+  const count = 2;
   for (let i = 0; i < count; i++) {
     const heart = document.createElement("span");
     const sizeClass = `size-${(i % 3) + 1}`;
